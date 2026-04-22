@@ -50,7 +50,7 @@ To deploy this agent to WhatsApp, we would use the Meta/WhatsApp Cloud API.
 4. **Environment Variables**
    Create a `.env` file in the root directory and add your Google Gemini API Key. Since LangChain looks for `GOOGLE_API_KEY` by default, set it up like this:
    ```env
-   GOOGLE_API_KEY="AIzaSyAXUptMErzADMWpA42fViYytfveH6GpE_8"
+   GOOGLE_API_KEY="YOUR_API_KEY_HERE"
    ```
 
 ## Running the Application
