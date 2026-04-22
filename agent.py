@@ -157,8 +157,10 @@ def handle_lead(state: AgentState):
         docs = retriever.invoke(plan_query)
         context = "\n".join([d.page_content for d in docs[:3]])
         
-        system_msg = f"""You are a helpful sales assistant. The user wants to sign up. 
-Confirm the plan details/policies briefly and then ask for the MISSING information: {missing[0]}.
+        system_msg = f"""You are a helpful sales assistant. The user wants to sign up for a plan. 
+Confirm the plan features (Basic: $29, 720p | Pro: $79, 4K, 24/7 support) and policies (No refunds after 7 days) briefly.
+Then ask for the MISSING information: {missing[0]}.
+If asking for platform, say: 'Which Creator Platform do you use (e.g., YouTube, Instagram, etc.)?'
 Context: {context}"""
         
         wait_for_quota()
@@ -170,7 +172,7 @@ Context: {context}"""
         }
     else:
         mock_lead_capture(name, email, platform)
-        success_msg = f"Thanks {name}! We've captured your details ({email}, {platform}). Since you're on the Pro plan, you'll have 24/7 support and 4K resolution! Our team will contact you soon."
+        success_msg = f"Thanks {name}! We've captured your details ({email}, {platform}). Your account is being set up. Remember, as a Pro user you get 24/7 support and 4K resolution! Our team will contact you soon."
         return {
             "messages": [AIMessage(content=success_msg)],
             "name": name, "email": email, "platform": platform, "lead_captured": True

@@ -5,10 +5,9 @@ import warnings
 from langchain_core.messages import HumanMessage
 from agent import graph
 
-# Suppress harmless multiprocessing leaked semaphore warning on shutdown
 warnings.filterwarnings("ignore", module="multiprocessing.resource_tracker")
 
-# ─── CSS Definitions ─────────────────────────────────────────────────────────
+
 custom_css = """
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
@@ -226,7 +225,7 @@ with gr.Blocks(title="AutoStream | Agent Portal") as demo:
         """)
 
     with gr.Row():
-        # ─── LEFT PANEL: CHAT ───
+        
         with gr.Column(scale=3, elem_classes="chat-wrapper"):
             gr.HTML('<div class="chat-header">AutoStream Agent Chat</div>')
             
@@ -249,13 +248,13 @@ with gr.Blocks(title="AutoStream | Agent Portal") as demo:
                 examples=[
                     "Hi! What are your pricing plans?",
                     "Do you offer 4K resolution exports?",
-                    "I want to sign up for the Pro plan. I'm Alex."
+                    "I want to sign up for the Pro plan. My name is Alex."
                 ],
                 inputs=msg_in,
                 label=""
             )
 
-        # ─── RIGHT PANEL: DASHBOARD ───
+    
         with gr.Sidebar(open=False, position="right"):
             gr.HTML("""
             <div style="padding-bottom:15px; margin-bottom:20px;">
