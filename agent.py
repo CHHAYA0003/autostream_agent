@@ -23,7 +23,7 @@ class AgentState(TypedDict):
 
 # Define Intent schema for structured output
 class IntentClassification(BaseModel):
-    intent: str = Field(description="The intent of the user. Must be one of: 'casual_greeting', 'product_inquiry', 'high_intent_lead'")
+    intent: str = Field(description="The intent of the user. Must be one of: 'casual_greeting', 'product_inquiry', 'high_intent_lead (ready to sign up)'")
 
 # Initialize LLM - gemini-2.5-flash-lite
 llm = ChatGoogleGenerativeAI(model="gemini-flash-lite-latest", temperature=0, max_retries=6)
@@ -65,7 +65,7 @@ def classify_intent(state: AgentState):
 Based on the user's message, classify their intent into exactly one of these categories:
 1. 'casual_greeting': The user is just saying hello, asking how you are, etc.
 2. 'product_inquiry': The user is asking about pricing, features, company policies, or how the product works.
-3. 'high_intent_lead': The user expresses a clear desire to sign up, buy, subscribe, or try a specific plan.
+3. 'high_intent_lead': The user expresses a clear desire to sign up, buy, subscribe, or try a specific plan (e.g. 'I want to sign up' or 'Ready to buy').
 
 User message: {last_message}
 """
@@ -102,7 +102,7 @@ Context:
 class LeadExtraction(BaseModel):
     name: str = Field(description="The user's name if mentioned.", default="")
     email: str = Field(description="The user's email if mentioned.", default="")
-    platform: str = Field(description="The user's creator platform if mentioned.", default="")
+    platform: str = Field(description="The user's Creator Platform (YouTube, Instagram, etc.) if mentioned.", default="")
 
 def handle_lead(state: AgentState):
     messages = state["messages"]

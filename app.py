@@ -163,7 +163,7 @@ def get_workflow_html(stage):
 def get_checklist_html(st):
     items = [("Name [REQUIRED]", st.get("name")), 
              ("Email [REQUIRED]", st.get("email")), 
-             ("Platform [REQUIRED]", st.get("platform"))]
+             ("Creator Platform (YouTube, etc.)", st.get("platform"))]
     html = '<div style="display:flex; flex-direction:column; gap:10px;">'
     for label, val in items:
         # Sanitize "null" strings
