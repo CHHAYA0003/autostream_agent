@@ -7,7 +7,6 @@ from agent import graph
 
 warnings.filterwarnings("ignore", module="multiprocessing.resource_tracker")
 
-
 custom_css = """
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
